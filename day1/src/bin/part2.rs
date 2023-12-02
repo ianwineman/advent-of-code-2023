@@ -1025,7 +1025,7 @@ fn run(input: &str) -> u32 {
 
     for line in lines {
         let re = Regex::new(
-            r"(?<one>one)|(?<two>two)|(?<three>three)|(?<four>four)|(?<five>five)|(?<siz>six)|(?<seven>seven)|(?<eight>eight)|(?<nine>nine)"
+            r"(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)"
         ).unwrap();
 
         let mut new_line = String::from(line);
@@ -1080,16 +1080,10 @@ zoneight234
 
     #[test]
     fn example_2() {
-        assert_eq!("1one", "oneone".replacen("one", "1", 1));
-    }
+        let input: &str = "thrmone3eightsixfive";
 
-    #[test]
-    fn example_3() {
-        assert_eq!("8thre8", "eightthreeight".replacen("eight", "8", 2));
-    }
+        let result: u32 = run(input);
 
-    #[test]
-    fn example_4() {
-        assert_eq!("8threeight", "eightthreeight".replacen("eight", "8", 1));
+        assert_eq!(result, 15);
     }
 }
