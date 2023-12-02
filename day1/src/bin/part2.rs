@@ -1032,7 +1032,7 @@ fn run(input: &str) -> u32 {
 
         while re.is_match(&new_line) {
             let number = re.find(&new_line).unwrap().as_str();
-            new_line = new_line.replace(number, numbers.get(&number).unwrap());
+            new_line = new_line.replacen(number, numbers.get(&number).unwrap(), 1);
         }
 
         let mut chars = new_line.as_str().chars();
@@ -1052,8 +1052,6 @@ fn run(input: &str) -> u32 {
         let mut calibration_value = String::from("");
         calibration_value.push(first_digit);
         calibration_value.push(last_digit);
-
-        println!("{} -> {} -> {}", line, new_line, calibration_value);
 
         calibration_value_sum += calibration_value.parse::<u32>().unwrap();
     }
@@ -1078,5 +1076,20 @@ zoneight234
         let result: u32 = run(input);
 
         assert_eq!(result, 281);
+    }
+
+    #[test]
+    fn example_2() {
+        assert_eq!("1one", "oneone".replacen("one", "1", 1));
+    }
+
+    #[test]
+    fn example_3() {
+        assert_eq!("8thre8", "eightthreeight".replacen("eight", "8", 2));
+    }
+
+    #[test]
+    fn example_4() {
+        assert_eq!("8threeight", "eightthreeight".replacen("eight", "8", 1));
     }
 }
