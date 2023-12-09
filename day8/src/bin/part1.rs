@@ -754,7 +754,7 @@ fn run(input: &str) -> u32 {
 
     let turn_number: usize = turns.len();
     let mut turn_counter: usize = 0;
-    let mut current_node: &str = lines[2].split(" ").collect::<Vec<&str>>()[0];
+    let mut current_node: &str = "AAA";
 
     loop {
         let turn = turns[turn_counter];
