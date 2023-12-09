@@ -1,8 +1,8 @@
 use regex::Regex;
 
 fn main() {
-    let input: &str = "Time:        46     80     78     66
-Distance:   214   1177   1402   1024";
+    let input: &str = "Time:      7  15   30
+Distance:  9  40  200";
 
     println!("Ans: {}", run(input))
 }
