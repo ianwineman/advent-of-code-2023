@@ -35,8 +35,9 @@ fn run(input: &str) -> i32 {
 
         let mut prediction = 0;
 
-        for row in all_rows {
-            prediction += row.last().unwrap();
+        all_rows.reverse();
+        for i in 0..(all_rows.len() - 1) {
+            prediction = all_rows[i+1][0] - prediction;
         }
 
         predicted_sum += prediction;
@@ -57,6 +58,6 @@ mod tests {
 
         let result: i32 = run(input);
 
-        assert_eq!(result, 114);
+        assert_eq!(result, 2);
     }
 }
