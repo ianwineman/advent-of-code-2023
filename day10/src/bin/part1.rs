@@ -12,6 +12,7 @@ fn run(input: &str) -> usize {
     let mut completed_path_lens: Vec<usize> = Vec::new();
 
     let mut current_position: usize = input.find('S').unwrap();
+    println!("{:?} {:?}", current_position, input.get(std::ops::Range { start: current_position, end: current_position + 1 }).unwrap());
     active_paths.push(Vec::from([current_position]));
 
     'outer: loop {
