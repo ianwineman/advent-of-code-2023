@@ -5,18 +5,13 @@ fn main() {
 }
 
 fn run(input: &str) -> u32 {
-    let mut current_value_sum: u32 = 0;
-
-    let strings: Vec<&[u8]> = input.split(",").into_iter().map(|x| x.as_bytes()).collect();
-
-    println!("{:?}", strings);
-
-    for string in strings {
-        let string_sum = string.into_iter().fold(0, |acc, x| ((acc + (*x as u32)) * 17) % 256  );
-        current_value_sum += string_sum;
-    }
-
-    return current_value_sum
+    return input
+            .split(",")
+            .into_iter()
+            .map(|x| x.as_bytes())
+            .fold(0, |acc, x| acc + x.into_iter()
+                .fold(0, |acc, x| ((acc + (*x as u32)) * 17) % 256)
+            )
 }
 
 #[cfg(test)]
